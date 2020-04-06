@@ -1,0 +1,39 @@
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+
+
+
+<style>
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+
+ul.b {
+  list-style-type: lower-alpha;;
+  }
+}
+</style>
+<h1>My First CSS Example</h1>
+<p>This is a paragraph.</p>
+
+{% if latest_question_list %}
+    <ul class="b">
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
